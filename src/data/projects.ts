@@ -77,8 +77,8 @@ export const projects: Project[] = [
     demo: 'https://kc-art-gallery.vercel.app/',
     images: [
       {
-        src: 'images/projects/kc-art-gallery/feed-screenshot.webp',
-        alt: 'KC Art Gallery artwork feed, showing a post with its title, materials used, and artwork image',
+        src: 'images/projects/kc-art-gallery/app-screenshot.webp',
+        alt: 'KC Art Gallery app showing the artist profile and an artwork feed post with its title and materials used',
       },
     ],
   },

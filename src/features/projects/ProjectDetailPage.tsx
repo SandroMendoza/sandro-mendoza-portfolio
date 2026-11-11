@@ -30,49 +30,66 @@ export function ProjectDetailPage() {
 
   return (
     <PageContainer className="py-16 sm:py-24">
-      <p className="text-text-muted text-sm">
-        <Link to="/projects" className="hover:text-violet">
-          Projects
-        </Link>{' '}
-        / <span className="text-text">{project.title}</span>
-      </p>
+      <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_440px] lg:items-start">
+        <div>
+          <p className="text-text-muted text-sm">
+            <Link to="/projects" className="hover:text-violet">
+              Projects
+            </Link>{' '}
+            / <span className="text-text">{project.title}</span>
+          </p>
 
-      <h1 className="text-text mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
-        {project.title}
-      </h1>
-      <p className="text-text-muted mt-3 max-w-2xl">{project.summary}</p>
+          <h1 className="text-text mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+            {project.title}
+          </h1>
+          <p className="text-text-muted mt-3 max-w-2xl">{project.summary}</p>
 
-      <div className="mt-6 flex flex-wrap gap-2">
-        {project.technologies.map((tech) => (
-          <span
-            key={tech}
-            className="border-border bg-surface text-text-muted rounded-full border px-3 py-1 text-xs font-medium"
-          >
-            {tech}
-          </span>
-        ))}
-      </div>
+          <div className="mt-6 flex flex-wrap gap-2">
+            {project.technologies.map((tech) => (
+              <span
+                key={tech}
+                className="border-border bg-surface text-text-muted rounded-full border px-3 py-1 text-xs font-medium"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
 
-      <div className="mt-6 flex flex-wrap gap-3">
-        <a
-          href={project.repository}
-          target="_blank"
-          rel="noreferrer"
-          className="bg-violet inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90"
-        >
-          <GithubIcon className="h-4 w-4" />
-          View on GitHub
-        </a>
-        {project.demo && (
-          <a
-            href={project.demo}
-            target="_blank"
-            rel="noreferrer"
-            className="border-border bg-surface text-text hover:border-violet inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-semibold"
-          >
-            <ExternalLink className="h-4 w-4" aria-hidden />
-            Live Demo
-          </a>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <a
+              href={project.repository}
+              target="_blank"
+              rel="noreferrer"
+              className="bg-violet inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90"
+            >
+              <GithubIcon className="h-4 w-4" />
+              View on GitHub
+            </a>
+            {project.demo && (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noreferrer"
+                className="border-border bg-surface text-text hover:border-violet inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-semibold"
+              >
+                <ExternalLink className="h-4 w-4" aria-hidden />
+                Live Demo
+              </a>
+            )}
+          </div>
+        </div>
+
+        {project.images.length > 0 && (
+          <div className="space-y-4">
+            {project.images.map((image) => (
+              <img
+                key={image.src}
+                src={withBase(image.src)}
+                alt={image.alt}
+                className="rounded-card border-border w-full border"
+              />
+            ))}
+          </div>
         )}
       </div>
 
@@ -132,22 +149,6 @@ export function ProjectDetailPage() {
             <h2 className="text-text text-xl font-bold">Challenges and decisions</h2>
             <p className="text-text-muted mt-4 text-sm leading-relaxed">{project.challenges}</p>
           </section>
-
-          {project.images.length > 0 && (
-            <section id="screenshots">
-              <h2 className="text-text text-xl font-bold">Screenshots</h2>
-              <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                {project.images.map((image) => (
-                  <img
-                    key={image.src}
-                    src={withBase(image.src)}
-                    alt={image.alt}
-                    className="rounded-card border-border border"
-                  />
-                ))}
-              </div>
-            </section>
-          )}
         </div>
       </div>
     </PageContainer>
