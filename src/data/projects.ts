@@ -75,7 +75,12 @@ export const projects: Project[] = [
       'The repository itself is a lean Next.js/Prisma foundation; the richer feed behavior (sign-in, per-post metadata, theming) lives in the deployed application — see the live demo below for the actual experience.',
     repository: 'https://github.com/SandroMendoza/kc-art-gallery',
     demo: 'https://kc-art-gallery.vercel.app/',
-    images: [],
+    images: [
+      {
+        src: 'images/projects/kc-art-gallery/feed-screenshot.webp',
+        alt: 'KC Art Gallery artwork feed, showing a post with its title, materials used, and artwork image',
+      },
+    ],
   },
 ]
 
