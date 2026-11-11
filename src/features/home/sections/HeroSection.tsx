@@ -6,6 +6,7 @@ import { BentoGrid } from '@/components/bento/BentoGrid'
 import { PageContainer } from '@/components/layout/PageContainer'
 import { ButtonLink } from '@/components/ui/Button'
 import { contact } from '@/data/contact'
+import { withBase } from '@/lib/asset'
 
 export function HeroSection() {
   return (
@@ -37,7 +38,7 @@ export function HeroSection() {
 
           <BentoCard className="flex items-center justify-center xl:col-span-4 xl:row-span-2">
             <img
-              src="/images/profile/profile.webp"
+              src={withBase('images/profile/profile.webp')}
               alt="Portrait of Sandro Mendoza"
               width={320}
               height={320}

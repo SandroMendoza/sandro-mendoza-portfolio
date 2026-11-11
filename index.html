@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Sandro Mendoza — Software Developer, Backend Engineering</title>
@@ -17,7 +17,8 @@
       property="og:description"
       content="Building reliable systems with thoughtful design. Backend engineering, Hexagonal Architecture, and automated testing."
     />
-    <meta property="og:image" content="/images/profile/profile.webp" />
+    <meta property="og:url" content="https://sandromendoza.github.io/sandro-mendoza-portfolio/" />
+    <meta property="og:image" content="%BASE_URL%images/profile/profile.webp" />
     <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,6 +27,24 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+
+    <script>
+      // Restores the real path after GitHub Pages' 404.html redirect
+      // (see public/404.html) encodes it into the query string, before
+      // react-router reads the URL.
+      ;(function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search
+            .slice(1)
+            .split('&')
+            .map(function (s) {
+              return s.replace(/~and~/g, '&')
+            })
+            .join('?')
+          window.history.replaceState(null, '', l.pathname.slice(0, -1) + decoded + l.hash)
+        }
+      })(window.location)
+    </script>
 
     <script>
       ;(function () {

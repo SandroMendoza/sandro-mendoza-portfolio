@@ -5,6 +5,7 @@ import { GithubIcon } from '@/components/ui/BrandIcons'
 import { getProjectBySlug } from '@/data/projects'
 import { HexagonalDiagram } from '@/features/projects/diagrams/HexagonalDiagram'
 import { useDocumentMeta } from '@/hooks/useDocumentMeta'
+import { withBase } from '@/lib/asset'
 import { NotFoundPage } from '@/NotFoundPage'
 
 const sections = [
@@ -139,7 +140,7 @@ export function ProjectDetailPage() {
                 {project.images.map((image) => (
                   <img
                     key={image.src}
-                    src={image.src}
+                    src={withBase(image.src)}
                     alt={image.alt}
                     className="rounded-card border-border border"
                   />

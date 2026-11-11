@@ -15,6 +15,9 @@ dist-ssr
 # planning assets, not part of the shipped site
 temp/
 
+# local Claude Code harness state
+.claude/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

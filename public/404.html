@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sandro Mendoza — Software Developer, Backend Engineering</title>
+    <script>
+      // GitHub Pages serves this file for any unmatched path. It can't rewrite
+      // routes server-side, so it encodes the requested path into the query
+      // string and redirects to the app root, which decodes it back
+      // (see the script in index.html) before react-router reads the URL.
+      // Based on https://github.com/rafgraph/spa-github-pages
+      var pathSegmentsToKeep = 1
+
+      var l = window.location
+      l.replace(
+        l.protocol +
+          '//' +
+          l.hostname +
+          (l.port ? ':' + l.port : '') +
+          l.pathname
+            .split('/')
+            .slice(0, 1 + pathSegmentsToKeep)
+            .join('/') +
+          '/?/' +
+          l.pathname
+            .slice(1 + pathSegmentsToKeep)
+            .split('/')
+            .join('/')
+            .replace(/&/g, '~and~') +
+          (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+          l.hash,
+      )
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -4,6 +4,7 @@ import { Card } from '@/components/ui/Card'
 import { ButtonLink } from '@/components/ui/Button'
 import { GithubIcon, LinkedinIcon } from '@/components/ui/BrandIcons'
 import { contact } from '@/data/contact'
+import { withBase } from '@/lib/asset'
 
 const links = [
   { label: 'GitHub', value: 'SandroMendoza', href: contact.github, icon: GithubIcon },
@@ -34,7 +35,7 @@ export function ContactSection() {
             <ButtonLink href={`mailto:${contact.email}`} external>
               Email Me
             </ButtonLink>
-            <ButtonLink href={contact.resume} variant="secondary" external>
+            <ButtonLink href={withBase(contact.resume)} variant="secondary" external>
               <Download className="h-4 w-4" aria-hidden />
               Download Resume
             </ButtonLink>
