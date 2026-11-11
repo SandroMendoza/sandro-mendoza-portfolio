@@ -1,12 +1,13 @@
 import { CodeXml, Menu, X } from 'lucide-react'
 import { useState } from 'react'
-import { Link, NavLink } from 'react-router'
+import { Link, useLocation } from 'react-router'
 import { PageContainer } from '@/components/layout/PageContainer'
 import { ThemeToggle } from '@/components/ui/ThemeToggle'
-import { navItems } from '@/lib/navigation'
+import { isNavItemActive, navItems } from '@/lib/navigation'
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const { pathname, hash } = useLocation()
 
   return (
     <header className="border-border bg-bg/80 sticky top-0 z-50 border-b backdrop-blur">
@@ -21,30 +22,17 @@ export function Navbar() {
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex" aria-label="Primary">
-          {navItems.map((item) =>
-            item.href.includes('#') ? (
-              <Link
-                key={item.href}
-                to={item.href}
-                className="text-text-muted hover:text-text text-sm font-medium transition-colors"
-              >
-                {item.label}
-              </Link>
-            ) : (
-              <NavLink
-                key={item.href}
-                to={item.href}
-                end={item.href === '/'}
-                className={({ isActive }) =>
-                  `hover:text-text text-sm font-medium transition-colors ${
-                    isActive ? 'text-violet' : 'text-text-muted'
-                  }`
-                }
-              >
-                {item.label}
-              </NavLink>
-            ),
-          )}
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              to={item.href}
+              className={`hover:text-text text-sm font-medium transition-colors ${
+                isNavItemActive(item.href, pathname, hash) ? 'text-violet' : 'text-text-muted'
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
         </nav>
 
         <div className="hidden items-center md:flex">
@@ -72,32 +60,18 @@ export function Navbar() {
       {isOpen && (
         <nav className="border-border bg-bg border-t md:hidden" aria-label="Primary mobile">
           <PageContainer className="flex flex-col gap-1 py-3">
-            {navItems.map((item) =>
-              item.href.includes('#') ? (
-                <Link
-                  key={item.href}
-                  to={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-text-muted rounded-md px-2 py-2 text-sm font-medium"
-                >
-                  {item.label}
-                </Link>
-              ) : (
-                <NavLink
-                  key={item.href}
-                  to={item.href}
-                  end={item.href === '/'}
-                  onClick={() => setIsOpen(false)}
-                  className={({ isActive }) =>
-                    `rounded-md px-2 py-2 text-sm font-medium ${
-                      isActive ? 'text-violet' : 'text-text-muted'
-                    }`
-                  }
-                >
-                  {item.label}
-                </NavLink>
-              ),
-            )}
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                to={item.href}
+                onClick={() => setIsOpen(false)}
+                className={`rounded-md px-2 py-2 text-sm font-medium ${
+                  isNavItemActive(item.href, pathname, hash) ? 'text-violet' : 'text-text-muted'
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
           </PageContainer>
         </nav>
       )}
