@@ -15,7 +15,7 @@ export function ExperiencePage() {
         eyebrow="Experience"
         title="My professional background in software development."
       />
-      <ExperienceTimeline />
+      <ExperienceTimeline showEarlierExperience />
     </PageContainer>
   )
 }
